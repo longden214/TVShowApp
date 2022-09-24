@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,13 +14,14 @@ import android.widget.Toast;
 import com.quanglong.tvshowapp.R;
 import com.quanglong.tvshowapp.adapter.TVShowsAdapter;
 import com.quanglong.tvshowapp.databinding.ActivityMainBinding;
+import com.quanglong.tvshowapp.listener.TVShowsListener;
 import com.quanglong.tvshowapp.models.TVShow;
 import com.quanglong.tvshowapp.viewmodels.MostPopularTVShowsVM;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TVShowsListener {
 
     private MostPopularTVShowsVM viewModel;
     private ActivityMainBinding activityMainBinding;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void doInitialization(){
         activityMainBinding.tvShowsRecyclerView.setHasFixedSize(true);
         viewModel = new ViewModelProvider(this).get(MostPopularTVShowsVM.class);
-        tvShowsAdapter = new TVShowsAdapter(tvShows);
+        tvShowsAdapter = new TVShowsAdapter(tvShows,this);
         activityMainBinding.tvShowsRecyclerView.setAdapter(tvShowsAdapter);
 
         activityMainBinding.tvShowsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -89,5 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 activityMainBinding.setIsLoadingMore(true);
             }
         }
+    }
+
+    @Override
+    public void onTVShowClicked(TVShow tvShow) {
+        Intent intent = new Intent(getApplicationContext(), TVShowDetailsActivity.class);
+        intent.putExtra("id", tvShow.getId());
+        startActivity(intent);
     }
 }
