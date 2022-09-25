@@ -2,11 +2,13 @@ package com.quanglong.tvshowapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,7 @@ public class TVShowDetailsActivity extends AppCompatActivity {
 
     private void doInitialization() {
         tVShowDetailsVM = new ViewModelProvider(this).get(TVShowDetailsVM.class);
+        activityTvshowDetailsBinding.imageBack.setOnClickListener(view -> onBackPressed());
         getTVShowDatails();
     }
 
@@ -47,6 +50,36 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                         if (tvShowsDetailResponse.getTvShowDetails().getPictures() != null){
                             loadImageSlider(tvShowsDetailResponse.getTvShowDetails().getPictures());
                         }
+
+                        activityTvshowDetailsBinding.setTvShowImageURL(
+                                tvShowsDetailResponse.getTvShowDetails().getImage_path()
+                        );
+
+                        activityTvshowDetailsBinding.imageTVShow.setVisibility(View.VISIBLE);
+
+                        activityTvshowDetailsBinding.setDescription(
+                                String.valueOf(
+                                        HtmlCompat.fromHtml(
+                                                tvShowsDetailResponse.getTvShowDetails().getDescription(),
+                                                HtmlCompat.FROM_HTML_MODE_LEGACY
+                                        )
+                                )
+                        );
+                        activityTvshowDetailsBinding.textDescription.setVisibility(View.VISIBLE);
+                        activityTvshowDetailsBinding.textReadMore.setVisibility(View.VISIBLE);
+                        activityTvshowDetailsBinding.textReadMore.setOnClickListener(view -> {
+                            if (activityTvshowDetailsBinding.textReadMore.getText().toString().equals("Read More")){
+                                activityTvshowDetailsBinding.textDescription.setMaxLines(Integer.MAX_VALUE);
+                                activityTvshowDetailsBinding.textDescription.setEllipsize(null);
+                                activityTvshowDetailsBinding.textReadMore.setText(R.string.read_less);
+                            }else{
+                                activityTvshowDetailsBinding.textDescription.setMaxLines(4);
+                                activityTvshowDetailsBinding.textDescription.setEllipsize(TextUtils.TruncateAt.END);
+                                activityTvshowDetailsBinding.textReadMore.setText(R.string.read_more);
+                            }
+                        });
+
+                        loadBasicTVShowDetails();
                     }
                 }
         );
@@ -104,5 +137,20 @@ public class TVShowDetailsActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void loadBasicTVShowDetails() {
+        activityTvshowDetailsBinding.setTvShowName(getIntent().getStringExtra("name"));
+        activityTvshowDetailsBinding.setNetworkCountry(
+                getIntent().getStringExtra("network") + " ( " +
+                        getIntent().getStringExtra("country") + ")"
+        );
+        activityTvshowDetailsBinding.setStatus(getIntent().getStringExtra("status"));
+        activityTvshowDetailsBinding.setStartDate(getIntent().getStringExtra("startDate"));
+
+        activityTvshowDetailsBinding.textName.setVisibility(View.VISIBLE);
+        activityTvshowDetailsBinding.textNetworkCountry.setVisibility(View.VISIBLE);
+        activityTvshowDetailsBinding.textStatus.setVisibility(View.VISIBLE);
+        activityTvshowDetailsBinding.textStarted.setVisibility(View.VISIBLE);
     }
 }
