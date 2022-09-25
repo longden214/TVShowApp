@@ -20,6 +20,8 @@ import com.quanglong.tvshowapp.adapter.ImageSliderAdapter;
 import com.quanglong.tvshowapp.databinding.ActivityTvshowDetailsBinding;
 import com.quanglong.tvshowapp.viewmodels.TVShowDetailsVM;
 
+import java.util.Locale;
+
 public class TVShowDetailsActivity extends AppCompatActivity {
     private ActivityTvshowDetailsBinding activityTvshowDetailsBinding;
     private TVShowDetailsVM tVShowDetailsVM;
@@ -78,6 +80,23 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                                 activityTvshowDetailsBinding.textReadMore.setText(R.string.read_more);
                             }
                         });
+
+                        activityTvshowDetailsBinding.setRating(
+                                String.format(
+                                        Locale.getDefault(),
+                                        "%.2f",
+                                        Double.parseDouble(tvShowsDetailResponse.getTvShowDetails().getRating())
+                                )
+                        );
+                        if (tvShowsDetailResponse.getTvShowDetails().getGenres() != null) {
+                            activityTvshowDetailsBinding.setGenre(tvShowsDetailResponse.getTvShowDetails().getGenres()[0]);
+                        } else {
+                            activityTvshowDetailsBinding.setGenre("N/A");
+                        }
+                        activityTvshowDetailsBinding.setRuntime(tvShowsDetailResponse.getTvShowDetails().getRuntime() + " Min ");
+                        activityTvshowDetailsBinding.viewDivider1.setVisibility(View.VISIBLE);
+                        activityTvshowDetailsBinding.layoutMisc.setVisibility(View.VISIBLE);
+                        activityTvshowDetailsBinding.viewDivider2.setVisibility(View.VISIBLE);
 
                         loadBasicTVShowDetails();
                     }
