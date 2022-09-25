@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_fading_edge.xml" value="0.176" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_slider_indicator_active.xml" value="0.2585" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_slider_indicator_inactive.xml" value="0.136" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_tv_show.xml" value="0.2595" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/activity_tvshow_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/item_container_slider_image.xml" value="0.25416666666666665" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/item_container_tv_show.xml" value="0.264" />
       </map>
     </option>
