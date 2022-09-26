@@ -7,6 +7,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -94,9 +97,18 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                             activityTvshowDetailsBinding.setGenre("N/A");
                         }
                         activityTvshowDetailsBinding.setRuntime(tvShowsDetailResponse.getTvShowDetails().getRuntime() + " Min ");
+
                         activityTvshowDetailsBinding.viewDivider1.setVisibility(View.VISIBLE);
                         activityTvshowDetailsBinding.layoutMisc.setVisibility(View.VISIBLE);
                         activityTvshowDetailsBinding.viewDivider2.setVisibility(View.VISIBLE);
+
+                        activityTvshowDetailsBinding.buttonWebsite.setOnClickListener(view ->{
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri.parse(tvShowsDetailResponse.getTvShowDetails().getUrl()));
+                            startActivity(intent);
+                        });
+                        activityTvshowDetailsBinding.buttonWebsite.setVisibility(View.VISIBLE);
+                        activityTvshowDetailsBinding.buttonEpisodes.setVisibility(View.VISIBLE);
 
                         loadBasicTVShowDetails();
                     }
