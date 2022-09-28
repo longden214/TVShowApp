@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.quanglong.tvshowapp.R;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
             }
         });
 
+        activityMainBinding.imageWatchList.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), WatchlistActivity.class)));
         getMostPopularTVShows();
     }
 
