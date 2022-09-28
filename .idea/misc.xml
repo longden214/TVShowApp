@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2305" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_back_button.xml" value="0.152" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_fab.xml" value="0.133" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_fading_edge.xml" value="0.176" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_slider_indicator_active.xml" value="0.2585" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_slider_indicator_inactive.xml" value="0.136" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/background_tv_show.xml" value="0.2595" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/ic_back.xml" value="0.2305" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/ic_close.xml" value="0.2305" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2305" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/ic_search.xml" value="0.2305" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/ic_star.xml" value="0.2305" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/drawable/ic_watchlist.xml" value="0.2305" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/activity_tvshow_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/activity_tvshow_details.xml" value="0.264" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/item_containear_episode.xml" value="0.20854700854700856" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/item_container_slider_image.xml" value="0.25416666666666665" />
         <entry key="..\:/MyCode/Mobile/JavaAndroid/TVShowApp/app/src/main/res/layout/item_container_tv_show.xml" value="0.1" />

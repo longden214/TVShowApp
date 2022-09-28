@@ -52,7 +52,7 @@
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:contentDescription="@string/app_name"
                 android:padding="@dimen/_2sdp"
-                app:srcCompat="@drawable/ic_watchlist"
+                app:srcCompat="@drawable/ic_added"
                 app:tint="@color/colorTextIcons" />
 
             <ImageView
