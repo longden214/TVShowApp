@@ -28,6 +28,7 @@ import com.quanglong.tvshowapp.adapter.EpisodesAdapter;
 import com.quanglong.tvshowapp.adapter.ImageSliderAdapter;
 import com.quanglong.tvshowapp.databinding.ActivityTvshowDetailsBinding;
 import com.quanglong.tvshowapp.databinding.LayoutEpisodesBottomSheetBinding;
+import com.quanglong.tvshowapp.models.TVShow;
 import com.quanglong.tvshowapp.viewmodels.TVShowDetailsVM;
 
 import java.util.Locale;
@@ -37,6 +38,7 @@ public class TVShowDetailsActivity extends AppCompatActivity {
     private TVShowDetailsVM tVShowDetailsVM;
     private BottomSheetDialog bottomSheetDialog;
     private LayoutEpisodesBottomSheetBinding layoutEpisodesBottomSheetBinding;
+    private TVShow tvShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +51,15 @@ public class TVShowDetailsActivity extends AppCompatActivity {
     private void doInitialization() {
         tVShowDetailsVM = new ViewModelProvider(this).get(TVShowDetailsVM.class);
         activityTvshowDetailsBinding.imageBack.setOnClickListener(view -> onBackPressed());
+        tvShow = (TVShow) getIntent().getSerializableExtra("tvShow");
+
         getTVShowDatails();
     }
 
     private void getTVShowDatails() {
         activityTvshowDetailsBinding.setIsLoading(true);
 
-        String tvShowId = String.valueOf(getIntent().getIntExtra("id",-1));
+        String tvShowId = String.valueOf(tvShow.getId());
         tVShowDetailsVM.getTVShowDetails(tvShowId).observe(
                 this,tvShowsDetailResponse -> {
                     activityTvshowDetailsBinding.setIsLoading(false);
@@ -141,7 +145,7 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                                     );
 
                                     layoutEpisodesBottomSheetBinding.textTitle.setText(
-                                            String.format("Episodes | %s", getIntent().getStringExtra("name"))
+                                            String.format("Episodes | %s", tvShow.getName())
                                     );
 
                                     // đóng Dialog
@@ -223,13 +227,13 @@ public class TVShowDetailsActivity extends AppCompatActivity {
     }
 
     private void loadBasicTVShowDetails() {
-        activityTvshowDetailsBinding.setTvShowName(getIntent().getStringExtra("name"));
+        activityTvshowDetailsBinding.setTvShowName(tvShow.getName());
         activityTvshowDetailsBinding.setNetworkCountry(
-                getIntent().getStringExtra("network") + " ( " +
-                        getIntent().getStringExtra("country") + ")"
+                tvShow.getNetwork() + " ( " +
+                        tvShow.getCountry() + ")"
         );
-        activityTvshowDetailsBinding.setStatus(getIntent().getStringExtra("status"));
-        activityTvshowDetailsBinding.setStartDate(getIntent().getStringExtra("startDate"));
+        activityTvshowDetailsBinding.setStatus(tvShow.getStatus());
+        activityTvshowDetailsBinding.setStartDate(tvShow.getStart_date());
 
         activityTvshowDetailsBinding.textName.setVisibility(View.VISIBLE);
         activityTvshowDetailsBinding.textNetworkCountry.setVisibility(View.VISIBLE);
