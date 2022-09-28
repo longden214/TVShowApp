@@ -101,4 +101,5 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
         intent.putExtra("tvShow", tvShow);
         startActivity(intent);
     }
+
 }
