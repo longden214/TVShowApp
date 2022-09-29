@@ -7,5 +7,6 @@
     <string name="website">Website</string>
     <string name="episodes">Episodes</string>
     <string name="watchlist">Watchlist</string>
+    <string name="search_tv_show">Search</string>
 
 </resources>

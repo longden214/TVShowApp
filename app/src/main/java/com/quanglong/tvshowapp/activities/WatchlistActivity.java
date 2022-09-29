@@ -14,6 +14,7 @@ import com.quanglong.tvshowapp.adapter.WatchlistAdapter;
 import com.quanglong.tvshowapp.databinding.ActivityWatchlistBinding;
 import com.quanglong.tvshowapp.listener.WatchlistListener;
 import com.quanglong.tvshowapp.models.TVShow;
+import com.quanglong.tvshowapp.utilities.TempDataHolder;
 import com.quanglong.tvshowapp.viewmodels.WatchlistViewModel;
 
 import java.util.ArrayList;
@@ -40,12 +41,16 @@ public class WatchlistActivity extends AppCompatActivity implements WatchlistLis
         viewModel = new ViewModelProvider(this).get(WatchlistViewModel.class);
         activityWatchlistBinding.imageBack.setOnClickListener(view -> onBackPressed());
         watchLists = new ArrayList<>();
+        loadWatchlist();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        loadWatchlist();
+        if (TempDataHolder.IS_WATCHLIST_UPDATED){
+            loadWatchlist();
+            TempDataHolder.IS_WATCHLIST_UPDATED = false;
+        }
     }
 
     private void loadWatchlist() {
